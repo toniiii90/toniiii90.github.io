@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toni — Desarrollador Web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12151A;
+    --surface: #191D25;
+    --line: #2A2F3A;
+    --ink: #E9E7E0;
+    --ink-dim: #8B92A0;
+    --amber: #E8A33D;
+    --amber-dim: #6B5730;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  a{ color: var(--amber); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--amber); outline-offset: 3px; }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--line);
+  }
+  .ticket-id{
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--ink-dim);
+    margin-bottom: 20px;
+  }
+  .ticket-id .num{ color: var(--amber); }
+  h1{
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin: 0 0 18px;
+    max-width: 11ch;
+  }
+  .role{
+    font-size: 1.15rem;
+    color: var(--ink-dim);
+    max-width: 46ch;
+    margin: 0 0 28px;
+  }
+  .hero-meta{
+    display:flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--ink-dim);
+  }
+  .hero-meta span strong{ color: var(--ink); font-weight: 500; }
+
+  /* ---------- Section labels ---------- */
+  .section{
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section:last-of-type{ border-bottom: none; }
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    gap: 16px;
+  }
+  .section-head h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .section-head .count{
+    font-size: 13px;
+    color: var(--ink-dim);
+    white-space: nowrap;
+  }
+
+  /* ---------- Route (projects) ---------- */
+  .route{
+    position: relative;
+    padding-left: 26px;
+  }
+  .route::before{
+    content:"";
+    position:absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 12px);
+  }
+  .stop{
+    position: relative;
+    padding-bottom: 48px;
+  }
+  .stop:last-child{ padding-bottom: 0; }
+  .stop::before{
+    content:"";
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--amber);
+  }
+  .stop-name{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  .stop-url{
+    font-size: 12.5px;
+    color: var(--amber-dim);
+    margin: 0 0 14px;
+  }
+  .stop-desc{
+    color: var(--ink-dim);
+    margin: 0 0 16px;
+    max-width: 58ch;
+  }
+  .tags{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag{
+    font-size: 11.5px;
+    padding: 4px 9px;
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+    letter-spacing: 0.01em;
+  }
+
+  /* ---------- Stack ---------- */
+  .stack-grid{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .stack-grid span{
+    font-size: 13px;
+    padding: 7px 13px;
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  /* ---------- Contact / footer ---------- */
+  footer{
+    padding: 56px 0 80px;
+  }
+  footer h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+  footer p{
+    color: var(--ink-dim);
+    max-width: 48ch;
+    margin: 0 0 26px;
+  }
+  .contact-links{
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .contact-links a{ color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+  .contact-links a:hover{ border-color: var(--amber); text-decoration:none; color: var(--amber); }
+
+  @media (max-width: 560px){
+    header.hero{ padding: 64px 0 48px; }
+    .section{ padding: 48px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="ticket-id mono">RUTA <span class="num">DEV-2026</span> · ELCHE → DESTINO POR DEFINIR</div>
+    <h1>Toni García Clavel</h1>
+    <p class="role">Desarrollador junior full-stack. Construyo plataformas de reserva y pago que gestionan compras reales de billetes de bus, taxi y actividades.</p>
+    <div class="hero-meta mono">
+      <span><strong>Elche</strong>, Alicante</span>
+      <span><strong>CFGS DAW</strong> · nota media 7.063</span>
+      <span>Disponible para incorporación</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Proyectos en producción</h2>
+      <span class="count mono">4 plataformas</span>
+    </div>
+
+    <div class="route">
+
+      <div class="stop">
+        <p class="stop-name">Ticketlogy</p>
+        <p class="stop-url mono">ticketlogy.com</p>
+        <p class="stop-desc">Plataforma de venta de billetes construida desde cero: fichas de producto, carrito, checkout, pasarela de pago Redsys, PDFs de billete y confirmaciones por email en varios idiomas. Incluye el flujo completo de emisión de billetes con proveedores externos.</p>
+        <div class="tags mono">
+          <span class="tag">PHP / PDO</span>
+          <span class="tag">Redsys</span>
+          <span class="tag">Mailjet</span>
+          <span class="tag">FPDF</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <p class="stop-name">Oasbus</p>
+        <p class="stop-url mono">oasbus.com</p>
+        <p class="stop-desc">Depuración de una integración de pago Redsys con 3D Secure (EMV3DS), sistema de confirmación de compra multilingüe y alta de nuevos productos en el buscador con checkout directo.</p>
+        <div class="tags mono">
+          <span class="tag">PHP</span>
+          <span class="tag">Redsys / 3DS</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">i18n</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <p class="stop-name">Busbeauvais</p>
+        <p class="stop-url mono">busbeauvais.com</p>
+        <p class="stop-desc">Rediseño de la página de confirmación de compra como página de venta cruzada, con tarjetas de producto dinámicas, precios con cupón en tiempo real y contenido traducido a 9 idiomas.</p>
+        <div class="tags mono">
+          <span class="tag">PHP</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">i18n · 9 idiomas</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <p class="stop-name">MyTaxiGroup</p>
+        <p class="stop-url mono">mytaxigroup.es</p>
+        <p class="stop-desc">Panel de reservas para agencias: buscador de vehículos, cálculo de precios y extras, carrito, pago con Redsys y generación de bonos en PDF. También construí el sitio público de la marca.</p>
+        <div class="tags mono">
+          <span class="tag">PHP</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Redsys</span>
+          <span class="tag">ERP interno</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Herramientas</h2>
+    </div>
+    <div class="stack-grid mono">
+      <span>PHP / PDO</span>
+      <span>MySQL</span>
+      <span>JavaScript</span>
+      <span>HTML / CSS</span>
+      <span>Redsys</span>
+      <span>Git</span>
+      <span>WordPress</span>
+      <span>Netlify</span>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Hablemos</h2>
+    <p>Busco mi primera posición estable como desarrollador. Si tienes algo que encaje, escríbeme.</p>
+    <div class="contact-links">
+      <a href="mailto:antoniofcb@outlook.es">Email</a>
+      <a href="https://www.linkedin.com/in/toni-jr" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/toniiii90" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
